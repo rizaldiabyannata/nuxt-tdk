@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between px-6 items-center pt-2 w-full fixed z-30">
     <div class="text-black">
-      <NuxtLink to="/"><img class="h-6 md:h-8 xl:h-10" src="/public/img/logotdk.png" alt=""></NuxtLink>
+      <NuxtLink to="/"><img class="h-6 md:h-8 xl:h-10" src="/img/logotdk.png" alt="Logo"></NuxtLink>
     </div>
     <div
       class="hidden md:flex flex-row shadow-md rounded-full px-12 py-4 space-x-6 text-[1rem] bg-gray-300/40 backdrop-blur-md text-black">
@@ -14,7 +14,7 @@
     </div>
     <div class="md:hidden flex items-center justify-center z-40">
       <label class="btn btn-ghost swap swap-rotate rounded-2xl bg-gray-400/50 backdrop-blur-md">
-        <input type="checkbox" @change="handleMenuToggle" v-model="isMobileMenuOpen" />
+        <input type="checkbox" v-model="isMobileMenuOpen" />
 
         <svg class="swap-off fill-black" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
           viewBox="0 0 512 512">
@@ -53,20 +53,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isMobileMenuOpen: false // State untuk melacak status menu mobile
-    };
-  },
-  methods: {
-    handleMenuToggle() {
-      console.log('Menu toggled, new state:', this.isMobileMenuOpen);
-    },
-    closeMobileMenu() {
-      this.isMobileMenuOpen = false;
-    }
-  }
+<script setup>
+import { ref } from 'vue';
+
+const isMobileMenuOpen = ref(false);
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false;
 };
 </script>

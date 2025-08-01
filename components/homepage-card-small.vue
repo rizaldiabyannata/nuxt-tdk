@@ -19,26 +19,23 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: 'Card Title'
-    },
-    description: {
-      type: String,
-      default: 'A card component has a figure, a body part, and inside body there are title and actions parts.'
-    },
-    imageUrl: {
-      type: String,
-      default: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
-    },
-    navigateTO: {
-      type: String,
-      default: '#'
-    }
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    default: 'Card Title'
+  },
+  description: {
+    type: String,
+    default: 'A card component has a figure, a body part, and inside body there are title and actions parts.'
+  },
+  imageUrl: {
+    type: String,
+    default: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
+  },
+  navigateTO: {
+    type: String,
+    default: '#'
   }
-}
-
+})
 </script>
