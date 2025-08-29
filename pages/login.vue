@@ -23,6 +23,7 @@
 
           <!-- Input Fields -->
           <div class="flex flex-col gap-y-4">
+            <p v-if="error" class="text-red-400 text-sm">{{ error }}</p>
             <div>
               <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Name</label>
               <input
@@ -63,41 +64,35 @@
 </template>
 
 <script>
-import { navigateTo, useCookie } from "nuxt/app";
+import { navigateTo } from "nuxt/app";
 
 export default {
   data() {
     return {
       name: "",
       password: "",
+      error: null,
     };
   },
   methods: {
     async login() {
-      const name = this.name;
-      const password = this.password;
-
+      this.error = null; // Reset error before login attempt
       try {
-        const response = await this.$api.post(
-          "user/login",
-          { name, password },
-          {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-            },
-            withCredentials: true,
-          }
-        );
-        console.log("BERHASIL!!!", response.data);
+        // The axios plugin already includes credentials and correct headers.
+        // We only need to pass the endpoint and the payload.
+        await this.$api.post("user/login", {
+          name: this.name,
+          password: this.password,
+        });
 
-        const token = response.data.token;
-        if (token) {
-          const authToken = useCookie("auth_token");
-          authToken.value = token;
-        }
+        // If login is successful, the server sets an httpOnly cookie.
+        // The browser will handle it automatically for subsequent requests.
+        // We can now navigate to the protected admin page.
         await navigateTo("/admin");
-      } catch (error) {
-        console.log("GAGAL!!!", error);
+      } catch (err) {
+        // Set an error message to be displayed in the UI.
+        this.error = "Login failed. Please check your credentials and try again.";
+        console.error("Login failed:", err.response?.data || err.message);
       }
     },
   },

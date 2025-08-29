@@ -1,29 +1,28 @@
-import tailwindcss from "@tailwindcss/vite";
-import Aura from "@primevue/themes/aura"; 
+import Aura from "@primevue/themes/aura";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
+
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL || "kon", // Pastikan ini ada
-      node_env: process.env.NODE_ENV || "development", // Tambahkan ini untuk mengakses NODE_ENV
+      apiBaseUrl: process.env.API_BASE_URL || "http://localhost:5000/api",
+      node_env: process.env.NODE_ENV || "development",
     },
   },
+
   devtools: { enabled: true },
+
   css: ['~/assets/css/main.css'],
-  vite: {
-    plugins: [
-      tailwindcss(),
-      typography(),
-    ],
-  },
-  modules: ["@primevue/nuxt-module"],
+
+  modules: [
+    "@primevue/nuxt-module",
+    "@nuxtjs/tailwindcss"
+  ],
   
   primevue: {
     options: {
-      // unstyled: true,
-      pt: {},
       theme: {
-        preset: Aura, // 'Aura' sekarang bisa ditemukan
+        preset: Aura,
         options: {
           darkModeSelector: '',
         }

@@ -7,6 +7,7 @@
     <hr class="border-0.5 border-black mt-4" />
 
     <div v-if="tampilanAktif === 'daftar'" class="px-6 mt-12">
+      <p v-if="error" class="text-red-500 bg-red-100 border border-red-400 rounded-lg p-3 mb-4">{{ error }}</p>
       <div class="flex flex-row justify-between items-center w-full">
         <button @click="tampilanAktif = 'buat'" class="btn shadow-none border-0 flex flex-row justify-center items-center space-x-2 px-4 py-3 rounded-xl bg-[#EB5523] text-white">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,6 +102,7 @@
               class="mt-1 block w-full shadow-sm border border-gray-700 rounded-2xl bg-white overflow-hidden"
             />
           </div>
+          <p v-if="formError" class="text-red-500 text-sm mt-2">{{ formError }}</p>
           <div class="flex justify-end pt-4 space-x-3">
              <button @click="tampilanAktif = 'daftar'" type="button" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancel</button>
             <button type="button" class="flex flex-row items-center space-x-2 px-4 py-2 bg-[#2949BE] text-white rounded-lg">
@@ -161,6 +163,8 @@ export default {
       },
       value: "",
       searchTimeout: null,
+      error: null, // For user-facing errors
+      formError: null, // For form-specific errors
     };
   },
   created() {
@@ -176,22 +180,17 @@ export default {
   },
   methods: {
     async fetchArticles(searchTerm = "") {
-      console.log(`FETCH_ARTICLES: Mencari dengan term: "${searchTerm}"`);
+      this.error = null;
       try {
         let apiUrl = "/blogs?limit=10&page=1";
-        
-        // [FIX] Menggunakan '&' untuk parameter tambahan, bukan '?'
         if (searchTerm) {
           apiUrl += `&search=${encodeURIComponent(searchTerm)}`;
         }
-
         const response = await this.$api.get(apiUrl);
-        console.log("FETCH_ARTICLES: Response dari API:", response.data);
-
         this.articleList = response.data.data;
-        console.log("FETCH_ARTICLES: Isi `this.articleList` setelah di-set:", this.articleList);
-      } catch (error) {
-        console.error("FETCH_ARTICLES: Gagal mengambil data article:", error);
+      } catch (err) {
+        this.error = "Failed to fetch articles.";
+        console.error("Error fetching articles:", err.response?.data || err.message);
       }
     },
     handleFileUpload(event) {
@@ -201,6 +200,7 @@ export default {
       }
     },
     async submitArticles() {
+      this.formError = null;
       const formData = new FormData();
       formData.append("title", this.article.title);
       formData.append("content", this.article.content);
@@ -209,16 +209,20 @@ export default {
       }
 
       try {
-        const response = await this.$api.post("/blogs/", formData, {
+        await this.$api.post("/blogs/", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        console.log("Article berhasil dibuat:", response.data);
         this.tampilanAktif = "daftar";
+        // Reset form fields after successful submission
+        this.article.title = "";
+        this.article.content = "";
+        this.article.coverImage = null;
         await this.fetchArticles();
-      } catch (error) {
-        console.error("Gagal membuat article:", error);
+      } catch (err) {
+        this.formError = "Failed to submit article. Please check the fields.";
+        console.error("Error submitting article:", err.response?.data || err.message);
       }
     },
   },
