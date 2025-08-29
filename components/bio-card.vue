@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-row xl:w-110 w-140 bg-slate-800 justify-center items-center px-4 h-72 shadow-xl shadow-gray-400 rounded-xl">
         <div class="w-44 h-44 rounded-md">
-          <img src="/img/Alireza.jpg" class="w-full h-full object-cover rounded-md" alt="" />
+          <img :src="image" class="w-full h-full object-cover rounded-md" :alt="name" />
         </div>
         <div class="flex flex-col justify-center w-full h-full pl-4">
-          <h1 class="text-[#EB5523] font-semibold text-2xl">William George</h1>
-          <p>Chief Administrator</p>
+          <h1 class="text-[#EB5523] font-semibold text-2xl">{{ name }}</h1>
+          <p>{{ title }}</p>
           <hr class="text-white w-24 mt-2" />
           <p class="text-justify pt-4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis facere rerum soluta ipsa, beatae voluptatibus expedita quibusdam voluptas neque laborum.
@@ -51,22 +51,22 @@
       </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue';
-
-// Define the props that this component expects to receive
-const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  image: {
-    type: String,
-    default: '/img/bioprofile.png' // Provide a default image if none is passed
+<script>
+export default {
+  name: 'BioCard',
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      default: '/img/bioprofile.png' // Provide a default image if none is passed
+    }
   }
-});
+};
 </script>

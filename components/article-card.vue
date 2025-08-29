@@ -1,7 +1,7 @@
 <template>
   <div class="w-full md:aspect-[4/4] xl:aspect-[3/4] bg-[#F5EE9E] shadow-lg rounded-2xl flex flex-col p-6">
     <h1 class="text-black text-lg md:text-2xl font-semibold leading-tight break-words">{{ title }}</h1>
-    <p class="text-black text-sm sm:text-base pt-4 sm:pt-6">{{author}}</p>
+    <p class="text-black text-sm sm:text-base pt-4 sm:pt-6">{{ author }}</p>
     <div class="flex items-center mt-6 sm:mt-8">
       <a href="#" class="text-black font-semibold hover:text-[#EB5523] transition-colors duration-200">
         Read More
@@ -15,27 +15,20 @@
   </div>
 </template>
 
-<script setup>
-// Definisikan props yang akan diterima oleh komponen ini
-defineProps({
-  title: {
-    type: String,
-    required: true, // Opsional: pastikan prop ini selalu diisi
-    default: 'title Default'
-  },
-  content: {
-    type: String,
-    required: true,
-    default: 'content Default'
-  },
-  imageUrl: {
-    type: String,
-    required: true,
-    default: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
-  },
-  author: {
-    type: String,
-    required: true,
+<script>
+export default {
+  name: 'ArticleCard',
+  // Define the props that this component will receive.
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: 'Default Title'
+    },
+    author: {
+      type: String,
+      required: true,
+    }
   }
-});
+};
 </script>

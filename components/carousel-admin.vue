@@ -1,7 +1,7 @@
 <template>
   <div class="w-full max-w-xs sm:max-w-sm bg-[#F5EE9E] shadow-lg rounded-2xl flex flex-col p-6">
     <h1 class="text-black text-2xl sm:text-3xl font-semibold leading-tight break-words">{{ title }}</h1>
-    <p class="text-black text-sm sm:text-base pt-4 sm:pt-6">{{author}}</p>
+    <p class="text-black text-sm sm:text-base pt-4 sm:pt-6">{{ author }}</p>
     <div class="card-actions justify-start mt-4 flex flex-row space-x-1">
         <button class="bg-blue-700 p-1 rounded-lg">
           <svg width="20" height="20" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,27 +51,20 @@
   </div>
 </template>
 
-<script setup>
-// Definisikan props yang akan diterima oleh komponen ini
-defineProps({
-  title: {
-    type: String,
-    required: true, // Opsional: pastikan prop ini selalu diisi
-    default: 'title Default'
-  },
-  content: {
-    type: String,
-    required: true,
-    default: 'content Default'
-  },
-  imageUrl: {
-    type: String,
-    required: true,
-    default: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
-  },
-  author: {
-    type: String,
-    required: true,
+<script>
+export default {
+  name: 'CarouselAdmin',
+  // Define the props that this component will receive.
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: 'Default Title'
+    },
+    author: {
+      type: String,
+      required: true,
+    }
   }
-});
+};
 </script>

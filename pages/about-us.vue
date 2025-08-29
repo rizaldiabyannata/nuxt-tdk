@@ -12,114 +12,101 @@
     </div>
   </div>
 
-  <div class="max-w-screen h-screen flex flex-col justify-center px-12 lg:px-24 text-justify space-y-4">
+  <div class="max-w-screen min-h-screen flex flex-col justify-center px-12 lg:px-24 text-justify space-y-4">
     <div class="flex flex-col w-full space-y-2">
       <h1 class="text-4xl lg:text-6xl font-bold text-[#EB5523]">Our Vision</h1>
       <p class="lg:text-2xl">
-        Menjadi pemimpin terpercaya dalam perencanaan dan supervisi proyek, menciptakan solusi berkelanjutan dan inovatif yang berkontribusi pada pembangunan infrastruktur dan
-        kemajuan masyarakat.
+        To be a trusted leader in project planning and supervision, creating sustainable and innovative solutions that contribute to infrastructure development and community advancement.
       </p>
     </div>
     <hr />
     <div class="flex flex-col w-full space-y-2">
       <h1 class="text-4xl lg:text-6xl font-bold text-[#EB5523]">Our Mission</h1>
       <ol class="list-decimal pl-6 lg:text-2xl">
-        <li>Memberikan layanan perencanaan dan supervisi terbaik untuk proyek gedung, jalan, jembatan, dan sumber daya air.</li>
-        <li>Memastikan manajemen konstruksi yang efisien dan memenuhi ekspektasi klien.</li>
-        <li>Mengadopsi teknologi dan praktik inovatif yang memprioritaskan kualitas, keselamatan, dan keberlanjutan lingkungan.</li>
-        <li>Membangun kemitraan jangka panjang yang didasarkan pada kepercayaan dan profesionalisme.</li>
+        <li>Providing the best planning and supervision services for building, road, bridge, and water resource projects.</li>
+        <li>Ensuring efficient construction management that meets client expectations.</li>
+        <li>Adopting innovative technologies and practices that prioritize quality, safety, and environmental sustainability.</li>
+        <li>Building long-term partnerships based on trust and professionalism.</li>
       </ol>
     </div>
   </div>
-  <div class="flex flex-col max-w-screen min-h-screen bg-gray-200 justify-center items-center py-6">
-    <h1 class="text-3xl text-[#EB5523] font-bold">Struktur Manajemen</h1>
-    <h2 class="text-2xl text-[#EB5523] font-semibold mb-4">Direktur Utama</h2>
-    <div class="flex flex-row w-180 h-fit pt-6">
-      <img src="/img/Alireza.jpg" alt="Alireza" class="w-64 h-auto object-cover shadow-lg shadow-gray-400 rounded-lg" />
-      <div class="flex flex-col bg-white h-auto w-full my-4 shadow-lg shadow-gray-400 py-6 px-8 justify-center space-y-4 rounded-r-lg">
-        <h1 class="text-black font-bold text-2xl">Firman</h1>
-        <h2 class="text-black font-semibold text-lg">Direktur Utama</h2>
-        <p class="text-black text-justify pt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, sapiente ea ab minima quae alias odio velit labore, mollitia cupiditate delectus, molestias nobis
-          eius? Quis rem nobis, perferendis, sit fuga adipisci eum asperiores ad magni, id explicabo molestias minus quidem.
-        </p>
-        <div class="flex flex-row space-x-6 w-full justify-center items-center">
-          <icons-icon-linked-in />
-          <icons-icon-facebook />
-          <icons-icon-instagram />
-          <icons-icon-twitter />
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-3 items-center gap-12 mt-12">
-      <bio-card />
-      <bio-card />
-      <bio-card />
-    </div>
 
-    <!-- <div class="flex justify-center mb-12">
-      <BioCard
-        v-if="mainDirector"
+  <div class="flex flex-col max-w-screen min-h-screen bg-gray-200 justify-center items-center py-12">
+    <h1 class="text-3xl text-[#EB5523] font-bold">Management Structure</h1>
+
+    <!-- Main Director -->
+    <div v-if="mainDirector" class="flex flex-col items-center mb-12">
+      <h2 class="text-2xl text-[#EB5523] font-semibold mb-4">Main Director</h2>
+      <bio-card
         :name="mainDirector.name"
         :title="mainDirector.title"
         :image="mainDirector.image"
       />
-      <p v-else>Direktur utama tidak ditemukan.</p>
+    </div>
+    <p v-else>Main director not found.</p>
+
+    <!-- Other Directors -->
+    <div v-if="otherDirectors.length" class="flex flex-col items-center mb-12">
+        <h2 class="text-2xl text-[#EB5523] font-semibold mb-4">Board of Directors</h2>
+        <div class="flex flex-col md:flex-row flex-wrap justify-center gap-8">
+            <bio-card
+                v-for="member in otherDirectors"
+                :key="member.name"
+                :name="member.name"
+                :title="member.title"
+                :image="member.image"
+            />
+        </div>
     </div>
 
-    <div class="flex flex-col space-y-2 xl:flex-row mb-12 max-w-screen px-2 space-x-2">
-      <BioCard
-        v-for="member in otherDirectors"
-        :key="member.id"
-        :name="member.name"
-        :title="member.title"
-        :image="member.image"
-       class=""/>
+    <!-- General Management -->
+    <div v-if="generalManagement.length" class="flex flex-col items-center">
+        <h2 class="text-2xl text-[#EB5523] font-semibold mb-4">General Management</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <bio-card
+                v-for="member in generalManagement"
+                :key="member.name"
+                :name="member.name"
+                :title="member.title"
+                :image="member.image"
+            />
+        </div>
     </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-8 mb-12">
-      <BioCard
-        v-for="member in generalManagement"
-        :key="member.id"
-        :name="member.name"
-        :title="member.title"
-        :image="member.image"
-      />
-    </div> -->
-
-    <div class="flex flex-row w-full"></div>
   </div>
 </template>
 
 <script>
-import { h } from "vue";
-import BioCard from "/components/bio-card.vue";
+import BioCard from "~/components/bio-card.vue";
 
 export default {
+  name: 'AboutUs',
+  components: {
+    BioCard,
+  },
   data() {
     return {
       managementTeam: [
-        { level: 1, name: "John Doe", title: "Direktur Utama", image: "/img/bioprofile.png" },
-        { level: 2, name: "Jane Smith", title: "Direktur Operasional", image: "/img/bioprofile.png" },
-        { level: 2, name: "Peter Jones", title: "Direktur Keuangan", image: "/img/bioprofile.png" },
-        { level: 2, name: "Alice Brown", title: "Kepala Divisi Teknis", image: "/img/bioprofile.png" },
-        { level: 3, name: "Rizky Pratama", title: "Manajer Pemasaran", image: "/img/bioprofile.png" },
-        { level: 3, name: "Maya Indah Sari", title: "Manajer SDM", image: "/img/bioprofile.png" },
-        { level: 3, name: "Joko Susilo", title: "Kepala Proyek Senior", image: "/img/bioprofile.png" },
-        { level: 3, name: "Citra Kirana", title: "Spesialis Desain Grafis", image: "/img/bioprofile.png" },
+        { level: 1, name: "John Doe", title: "Main Director", image: "/img/bioprofile.png" },
+        { level: 2, name: "Jane Smith", title: "Operational Director", image: "/img/bioprofile.png" },
+        { level: 2, name: "Peter Jones", title: "Financial Director", image: "/img/bioprofile.png" },
+        { level: 2, name: "Alice Brown", title: "Head of Technical Division", image: "/img/bioprofile.png" },
+        { level: 3, name: "Rizky Pratama", title: "Marketing Manager", image: "/img/bioprofile.png" },
+        { level: 3, name: "Maya Indah Sari", title: "HR Manager", image: "/img/bioprofile.png" },
+        { level: 3, name: "Joko Susilo", title: "Senior Project Manager", image: "/img/bioprofile.png" },
+        { level: 3, name: "Citra Kirana", title: "Graphic Design Specialist", image: "/img/bioprofile.png" },
       ],
     };
   },
   computed: {
-    // Computed property untuk Direktur Utama (ID 1)
+    // Computed property for the Main Director (level 1)
     mainDirector() {
       return this.managementTeam.find((member) => member.level === 1);
     },
-    // Computed property untuk Direksi Lainnya (ID 2, 3, 4)
+    // Computed property for Other Directors (level 2)
     otherDirectors() {
       return this.managementTeam.filter((member) => member.level === 2);
     },
-    // Computed property untuk Manajemen Umum (ID 5 ke atas)
+    // Computed property for General Management (level 3 and up)
     generalManagement() {
       return this.managementTeam.filter((member) => member.level >= 3);
     },

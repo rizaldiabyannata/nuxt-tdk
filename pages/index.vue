@@ -2,7 +2,7 @@
   <div class="relative min-h-dvh flex flex-col">
     <div class="absolute inset-0 bg-[url('/img/sample/sample-1.jpeg')] bg-cover bg-center brightness-50 -z-10"></div>
 
-    <div class="flex flex-col flex-grow w-full justify-center items-center p-4 mt-[YOUR_NAVBAR_HEIGHT]">
+    <div class="flex flex-col flex-grow w-full justify-center items-center p-4 mt-20">
       <div class="flex flex-col w-full max-w-xl sm:w-4/5 md:w-3/5 lg:w-2/5 justify-center items-center text-center">
         <h1 class="font-bold text-xl sm:text-2xl md:text-3xl text-white">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -24,11 +24,9 @@
   <div class="flex min-h-screen bg-white justify-center items-center p-4 sm:p-8">
     <div
       class="flex flex-col bg-[url(/img/grafisbg.png)] bg-cover bg-no-repeat w-full max-w-3xl lg:max-w-4xl aspect-video sm:aspect-auto sm:min-h-[400px] md:min-h-[500px] rounded-2xl lg:rounded-3xl text-white p-8 sm:p-10 md:p-12 space-y-3 sm:space-y-4 justify-center">
-      <p class="font-bold text-2xl sm:text-3xl md:text-4xl">Visi Kami</p>
+      <p class="font-bold text-2xl sm:text-3xl md:text-4xl">Our Vision</p>
       <p class="pt-2 sm:pt-4 text-base sm:text-lg md:text-xl">
-        Menjadi pemimpin terpercaya dalam perencanaan dan supervisi proyek, menciptakan solusi berkelanjutan dan
-        inovatif yang berkontribusi pada pembangunan infrastruktur dan
-        kemajuan masyarakat.
+        To be a trusted leader in project planning and supervision, creating sustainable and innovative solutions that contribute to infrastructure development and community advancement.
       </p>
       <NuxtLink to="about-us"
         class="flex flex-row items-center border-white border w-fit rounded-full px-4 py-2 space-x-2 mt-4 sm:mt-6 hover:bg-white/20 transition-colors">
@@ -74,28 +72,7 @@
 
       <div
         class="carousel carousel-center bg-transparent rounded-2xl lg:rounded-3xl w-full max-w-7xl space-x-4 sm:space-x-8 p-4">
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
-          <carousel-card />
-        </div>
-        <div class="carousel-item">
+        <div v-for="item in carouselItems" :key="item" class="carousel-item">
           <carousel-card />
         </div>
       </div>
@@ -151,11 +128,11 @@
               class="block w-full rounded-xl bg-white px-3 py-2 sm:py-2.5 text-base text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm leading-6"></textarea>
           </div>
         </div>
-        <a href="#"
-          class="inline-flex flex-row items-center justify-center border-black border w-fit rounded-full px-5 py-2 sm:px-6 sm:py-2.5 space-x-2 mt-6 sm:mt-8 text-sm sm:text-base hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-colors">
-          <icons-icon-arrow-right-filled />
-          <p class="font-semibold text-black">Send</p>
-        </a>
+        <button type="submit"
+          class="inline-flex flex-row items-center justify-center border-black border w-fit rounded-full px-5 py-2 sm:px-6 sm:py-2.5 space-x-2 mt-6 sm:mt-8 text-sm sm:text-base hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-colors group">
+          <icons-icon-arrow-right-filled class="fill-black group-hover:fill-white" />
+          <p class="font-semibold text-black group-hover:text-white">Send</p>
+        </button>
       </form>
     </div>
 
@@ -166,10 +143,35 @@
 
 </template>
 
+<script>
+import CarouselCard from '~/components/carousel-card.vue';
+
+export default {
+  name: 'HomePage',
+  components: {
+    CarouselCard,
+  },
+  data() {
+    return {
+      carouselItems: [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+        { id: 8 },
+      ]
+    }
+  }
+}
+</script>
+
 <style>
   .animate-marquee {
     animation: marquee 25s linear infinite;
-    /* Durasi bisa disesuaikan */
+    /* Duration can be adjusted */
   }
 
   @keyframes marquee {
