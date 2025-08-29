@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import typography from "@tailwindcss/typography";
 import Aura from "@primevue/themes/aura"; 
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
