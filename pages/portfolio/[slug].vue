@@ -28,10 +28,10 @@ console.log("Slug porto: ", slug);
 const portfoliosList = ref({});
 
 onMounted(async () => {
-  console.log("Mencoba mengambil data portofolio dari API...");
+  console.log("Mencoba mengambil data portfolio dari API...");
   try {
     const response = await axios.get(`http://localhost:5000/api/portfolios/${slug}`);
-    console.log("Data portofolio berhasil diambil:", response.data);
+    console.log("Data portfolio berhasil diambil:", response.data);
     portfoliosList.value = response.data.data;
   } catch (error) {
     console.error("Gagal mengambil data portfolio:", error);

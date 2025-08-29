@@ -135,7 +135,7 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p class="text-gray-400">Total Viewed Portofolio</p>
+        <p class="text-gray-400">Total Viewed Portfolio</p>
         <h1 class="font-semibold text-2xl">{{ summary?.portfolioViews ?? 0 }}</h1>
         <div class="flex flex-row items-center space-x-2">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +159,7 @@
 
     <div class="flex flex-row w-full px-6 mt-6 gap-3">
       <div class="flex flex-col w-2/3 border border-black rounded-xl h-72 text-black p-4">
-        <h1 class="font-bold text-2xl text-[#EB5523]">Popular Portofolio</h1>
+        <h1 class="font-bold text-2xl text-[#EB5523]">Popular Portfolio</h1>
         <table class="table w-full">
           <thead class="text-black">
             <tr>
@@ -183,7 +183,7 @@
         </table>
       </div>
       <div class="flex w-1/3 border border-black rounded-xl h-72 p-4">
-        <bar-portofolio />
+        <bar-portfolio />
       </div>
     </div>
     <div class="flex flex-row w-full px-6 mt-6 gap-3">
@@ -212,7 +212,7 @@
         </table>
       </div>
       <div class="flex w-1/3 border border-black rounded-xl h-72 p-4">
-        <bar-portofolio />
+        <bar-portfolio />
       </div>
     </div>
   </div>

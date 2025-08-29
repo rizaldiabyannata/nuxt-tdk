@@ -17,7 +17,7 @@
               fill="#F1F1F1"
             />
           </svg>
-          <p>Create Portofolio</p>
+          <p>Create Portfolio</p>
         </button>
         <div class="flex flex-row items-center space-x-3">
           <FloatLabel variant="on">
@@ -52,7 +52,7 @@
       </div>
 
       <div class="flex flex-col w-full mt-6 space-y-4">
-        <h1 class="text-2xl font-bold text-[#EB5523]">Highlight Portofolio</h1>
+        <h1 class="text-2xl font-bold text-[#EB5523]">Highlight Portfolio</h1>
 
         <div class="grid gap-4 w-full border border-black rounded-4xl p-4 space-x-2 items-center grid-cols-4">
           <!-- dummy -->
@@ -309,7 +309,7 @@ export default {
   methods: {
     // [FIX] Mengubah method untuk menerima parameter pencarian
     async fetchPortfolios(searchTerm = "") {
-      console.log(`Mencoba mengambil data portofolio. Term: "${searchTerm}"`);
+      console.log(`Mencoba mengambil data portfolio. Term: "${searchTerm}"`);
       try {
         // API URL dasar
         let apiUrl = "/portfolios?limit=10&page=1&status=all";
@@ -320,7 +320,7 @@ export default {
         }
 
         const response = await this.$api.get(apiUrl);
-        console.log("Data portofolio berhasil diambil:", response.data);
+        console.log("Data portfolio berhasil diambil:", response.data);
         this.portfoliosList = response.data.data;
       } catch (error) {
         console.error("Gagal mengambil data portfolio:", error);
@@ -355,7 +355,7 @@ export default {
 
         // Memuat ulang daftar setelah berhasil membuat
         await this.fetchPortfolios();
-        // await navigateTo("/admin/portofolio");
+        // await navigateTo("/admin/portfolio");
         window.location.reload(true);
       } catch (error) {
         console.error("Gagal membuat portfolio:", error);
@@ -364,7 +364,7 @@ export default {
 
     async handleEdit(slug) {
       try {
-        // 1. Panggil API untuk mendapatkan detail portofolio
+        // 1. Panggil API untuk mendapatkan detail portfolio
         const response = await this.$api.get(`/portfolios/${slug}`);
         console.log(`Ini adalah isi dari get by ${slug}`, response.data)
         const dataToEdit = response.data;
@@ -450,7 +450,7 @@ export default {
       try {
         let apiUrl = "/content-tracking/";
         const response = await this.$api.get(apiUrl);
-        console.log("Data highlited portofolio berhasil diambil:", response.data.highlightedPortfolios);
+        console.log("Data highlited portfolio berhasil diambil:", response.data.highlightedPortfolios);
         this.portoHighlightList = response.data.highlightedPortfolios;
       } catch (error) {
         console.error("Gagal mengambil data highlited portfolio:", error);
@@ -481,11 +481,11 @@ export default {
   computed: {
     judulHalaman() {
       if (this.tampilanAktif === "buat") {
-        return "Create Portofolio";
+        return "Create Portfolio";
       } else if (this.tampilanAktif === "edit") {
-        return "Edit Portofolio";
+        return "Edit Portfolio";
       }
-      return "Portofolio";
+      return "Portfolio";
     },
   },
 };

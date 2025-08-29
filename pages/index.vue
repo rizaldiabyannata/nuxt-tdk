@@ -42,11 +42,11 @@
     <div class="flex flex-col w-full max-w-6xl justify-center items-center">
       <div class="flex flex-col w-full items-start">
         <div>
-          <h1 class="text-black text-xl sm:text-2xl font-semibold">Our Portofolio</h1>
+          <h1 class="text-black text-xl sm:text-2xl font-semibold">Our Portfolio</h1>
           <p class="w-full font-bold text-[#EB5523] text-3xl sm:text-4xl md:text-5xl mt-1">Lorem Ipsum</p>
         </div>
         <div class="flex w-full items-end justify-end ">
-          <NuxtLink to="/portofolio" class="flex flex-row text-black items-center mt-4 sm:mt-0 hover:text-opacity-75 hover:text-orange-400">
+          <NuxtLink to="/portfolio" class="flex flex-row text-black items-center mt-4 sm:mt-0 hover:text-opacity-75 hover:text-orange-400">
             <p class="font-semibold mr-1">More</p>
             <icons-icon-triple-arrow />
           </NuxtLink>
