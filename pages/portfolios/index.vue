@@ -73,10 +73,10 @@ export default{
 
   methods: {
     async fetchPortfolios() {
-      console.log("Mencoba mengambil data portofolio dari API...");
+      console.log("Mencoba mengambil data portfolios dari API...");
       try {
         const response = await this.$api.get("/portfolios?limit5&page=1&status=all");
-        console.log("Data portofolio berhasil diambil:", response.data);
+        console.log("Data portfolios berhasil diambil:", response.data);
         this.portfoliosList = response.data.data;
       } catch (error) {
         console.error("Gagal mengambil data portfolio:", error);

@@ -7,7 +7,7 @@
       class="hidden md:flex flex-row shadow-md rounded-full px-12 py-4 space-x-6 text-[1rem] bg-gray-300/40 backdrop-blur-md text-black">
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/article">Article</NuxtLink>
-      <NuxtLink to="/portofolio">Our Portofolio</NuxtLink>
+      <NuxtLink to="/portfolios">Our Portfolios</NuxtLink>
       <NuxtLink to="/our-services">Our Service</NuxtLink>
       <NuxtLink to="/about-us">About Us</NuxtLink>
       <NuxtLink to="/contact">Contact</NuxtLink>
@@ -36,7 +36,7 @@
         <NuxtLink to="/article" class="text-lg" @click="closeMobileMenu">
           <p class="font-extrabold text-5xl">Article</p>
         </NuxtLink>
-        <NuxtLink to="/portofolio" class="text-lg" @click="closeMobileMenu">
+        <NuxtLink to="/portfolios" class="text-lg" @click="closeMobileMenu">
           <p class="font-extrabold text-5xl">Our Portfolio</p>
         </NuxtLink>
         <NuxtLink to="/our-services" class="text-lg" @click="closeMobileMenu">

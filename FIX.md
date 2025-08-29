@@ -34,7 +34,7 @@ This document outlines the changes made to the codebase after a thorough review.
 - Removed the unused `content` and `imageUrl` props.
 - Changed Indonesian code comments to English.
 
-### `components/bar-portofolio.vue`
+### `components/bar-portfolios.vue`
 - Refactored the component from Composition API (`<script setup>`) to Options API.
 - Translated the chart's dataset label "Penjualan Bulanan" to "Monthly Sales".
 
